@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Creepster&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+body {
+  background-color: rgb(223, 219, 219);
+  /* background-image: url() center/cover;
+  min-height: 100vh; */
+}
+
+a,
+h6 {
+  letter-spacing: 1px;
+  /* text-shadow: 13px -5px 4px #00000057; */
+  font-family: "Creepster", "Times New Roman", Times, serif;
+  font-weight: 50;
+  font-style: normal;
+}
+
+h1 {
+  letter-spacing: 2px;
+  text-shadow: 13px -5px 4px #00000057;
+  font-family: "Creepster", "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  letter-spacing: 2px;
+  text-shadow: 13px -5px 4px #00000057;
+  font-family: "Creepster", "Times New Roman", Times, serif;
+  font-weight: 200;
+  font-style: normal;
+}
