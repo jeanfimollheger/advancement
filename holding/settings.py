@@ -128,3 +128,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'users.User'
+
+# Rediriger après connexion
+LOGIN_REDIRECT_URL = 'index'  # ou une autre vue existante

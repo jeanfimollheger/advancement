@@ -9,6 +9,12 @@
   </head>
   <body>
     <h1>Hello World !!!</h1>
-    {% block content %} {% endblock %}
+    {% if user.is_authenticated %}
+    <p>Bienvenue, {{ user.username }} !</p>
+    <a href="{% url 'logout' %}">Se déconnecter</a>
+    {% else %}
+    <p>Personne n'est connecté.</p>
+    <a href="{% url 'login' %}">Se connecter</a>
+    {% endif %} {% block content %} {% endblock %}
   </body>
 </html>
