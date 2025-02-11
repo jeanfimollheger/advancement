@@ -17,7 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=100, unique=True)),
                 ('slug', models.SlugField(blank=True, max_length=100, unique=True)),
-                ('target_date_project', models.DateField(default=todolist.models.Project.default_target_date)),
+                ('target_date_project', models.DateField(default=todolist.models.default_target_date)),
             ],
         ),
     ]
