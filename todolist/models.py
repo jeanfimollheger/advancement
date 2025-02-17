@@ -31,11 +31,12 @@ class Project(models.Model):
     if not self.slug:
       self.slug = slugify(self.name)
     if self.pk is None:
-      self.historic_target_date_project.append(self.target_date_project)
+      self.historic_target_date_project.append(self.target_date_project.isoformat())
+      #isoformat permet de convertir l'objet date en une chaîne de caractères au format ISO 8601, ce qui est sérialisable en JSON
     else :  
       original= Project.objects.get(pk=self.pk)
       if original.target_date_project != self.target_date_project:
-        self.historic_target_date_project.append(self.target_date_project)
+        self.historic_target_date_project.append(self.target_date_project.isoformat())
     super().save(*args, **kwargs)
 
   def __str__(self):
@@ -57,11 +58,11 @@ class Task(models.Model):
     if not self.slug:
       self.slug = slugify(self.name)
     if self.pk is None:
-      self.historic_target_date_task.append(self.target_date_task)
+      self.historic_target_date_task.append(self.target_date_task.isoformat())
     else :  
       original= Task.objects.get(pk=self.pk)
       if original.target_date_task != self.target_date_task:
-        self.historic_target_date_task.append(self.target_date_task)
+        self.historic_target_date_task.append(self.target_date_task.isoformat())
     super().save(*args, **kwargs)
 
   def __str__(self):
