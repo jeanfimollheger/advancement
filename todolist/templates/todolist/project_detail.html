@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="{% static 'css/users/style.css' %}" />
   </head>
   <body>
-    {% block content %} {% for project in project_list %}
+    {% block content %}
+
+    <h2>{{ project.name }}</h2>
+    <h3>{{project.slug}}</h3>
     <h6>
-      {{ project.name }} -> {{ project.target_date_project }}
+      Target date : {{ project.target_date_project }}
       <p></p>
       // Historic :
       <ul>
@@ -19,7 +22,7 @@
         {% endfor %}
       </ul>
     </h6>
-    <a href="{% url 'todolist:project_detail' project.pk %}">Detail</a>
-    {% endfor %} {% endblock %}
+    <a href="{% url 'todolist:projects_list' %}">Return</a>
+    {% endblock %}
   </body>
 </html>
