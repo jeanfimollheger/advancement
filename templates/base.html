@@ -9,12 +9,15 @@
   </head>
   <body>
     <h1>Hello World !!!</h1>
+    <a href="{% url 'index' %}">Home</a><br />
     {% if user.is_authenticated %}
     <p>Bienvenue, {{ user.username }} !</p>
     <a href="{% url 'logout' %}">Se déconnecter</a>
     {% else %}
     <p>Personne n'est connecté.</p>
     <a href="{% url 'login' %}">Se connecter</a>
-    {% endif %} {% block content %} {% endblock %}
+    {% endif %} <br /><br />
+    <a href="{% url 'todolist:projects_list' %}">Projects list</a>
+    {% block content %} {% endblock %}
   </body>
 </html>
