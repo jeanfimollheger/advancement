@@ -30,3 +30,11 @@ h2 {
   font-weight: 200;
   font-style: normal;
 }
+
+h3 {
+  letter-spacing: 2px;
+  text-shadow: 13px -5px 4px #00000057;
+  font-family: "Creepster", "Times New Roman", Times, serif;
+  font-weight: 175;
+  font-style: normal;
+}

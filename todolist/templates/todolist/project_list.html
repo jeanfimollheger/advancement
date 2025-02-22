@@ -9,10 +9,11 @@
   </head>
   <body>
     {% block content %} {% for project in project_list %}
+
+    <h4>{{ project.name }} => {{ project.target_date_project }}</h4>
+    <h5>// Historic :</h5>
+    <p></p>
     <h6>
-      {{ project.name }} -> {{ project.target_date_project }}
-      <p></p>
-      // Historic :
       <ul>
         {% for date in project.historic_target_date_project %}
         <li>{{ date }}</li>
@@ -21,6 +22,7 @@
     </h6>
     <a href="{% url 'todolist:project_detail' project.pk %}">Detail</a>
     <a href="{% url 'todolist:project_update' project.slug %}">Update</a>
+    <a href="{% url 'todolist:project_delete' project.slug %}">Delete</a>
     {% endfor %} {% endblock %}
   </body>
 </html>

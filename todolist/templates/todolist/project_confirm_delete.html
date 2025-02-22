@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/users/style.css' %}" />
+  </head>
+  <body>
+    {% block content %}
+    <h2>Danger zone...</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <h3>{{project.name}}</h3>
+      <p>Supprimer réellement {{project.slug}} ?</p>
+      <input type="submit" value="Supprimer définitivement" />
+      <a href="{% url 'todolist:projects_list' %}">Annuler</a>
+    </form>
+    {% endblock %}
+  </body>
+</html>

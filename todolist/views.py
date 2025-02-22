@@ -19,7 +19,7 @@ class ProjectCreateView(CreateView):
   model= Project
   template_name= 'todolist/project_form.html'
   fields= ['name', 'target_date_project']
-  success_url= 'todolist/project_list'
+  success_url= reverse_lazy('todolist:projects_list')
 
   def get_context_data(self, *args, **kwargs):
     context= super().get_context_data(*args, **kwargs)
@@ -34,3 +34,10 @@ class ProjectUpdateView(UpdateView):
   def get_success_url(self):
     return reverse_lazy('todolist:project_detail', kwargs={'pk': self.object.pk})
   
+class ProjectDeleteView(DeleteView):
+  model= Project
+  template_name= 'todolist/project_confirm_delete.html'
+  #success_url= reverse_lazy('todolist:projects_list')
+  
+  def get_success_url(self):
+    return reverse_lazy('todolist:projects_list')
