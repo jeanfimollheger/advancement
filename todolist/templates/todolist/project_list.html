@@ -20,6 +20,7 @@
       </ul>
     </h6>
     <a href="{% url 'todolist:project_detail' project.pk %}">Detail</a>
+    <a href="{% url 'todolist:project_update' project.slug %}">Update</a>
     {% endfor %} {% endblock %}
   </body>
 </html>

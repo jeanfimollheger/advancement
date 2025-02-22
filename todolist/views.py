@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Project
+from django.urls import reverse_lazy
 
 # Create your views here.
 class ProjectListView(ListView):
@@ -24,4 +25,12 @@ class ProjectCreateView(CreateView):
     context= super().get_context_data(*args, **kwargs)
     context['projects']=Project.objects.all()
     return context
+
+class ProjectUpdateView(UpdateView):
+  model= Project
+  template_name= 'todolist/project_form.html'
+  fields= ['name', 'target_date_project']
+  
+  def get_success_url(self):
+    return reverse_lazy('todolist:project_detail', kwargs={'pk': self.object.pk})
   

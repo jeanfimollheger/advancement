@@ -21,7 +21,7 @@ class Category(models.Model):
   
 
 
-class Project(models.Model):
+class Project(models.Model):   
   name=models.CharField(max_length=100, unique=True)
   slug=models.SlugField(max_length=100, unique=True, blank=True)
   target_date_project = models.DateField(default=default_target_date)
