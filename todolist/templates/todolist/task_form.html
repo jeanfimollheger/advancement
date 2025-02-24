@@ -14,14 +14,13 @@
       {% csrf_token %} {{ form.as_p }}
       <button type="submit">Save</button>
     </form>
-    <h2>Your projects</h2>
+    <h2>Your others tasks about this category && project</h2>
     <ul>
-      {% for project in projects %}
+      {% for task in tasks %}
       <li>
-       <h3>{{ project.name }}</h3>
+       <h3>je veux recuper les taches ayant la même category et project que celle qui vient d'etre "submit"</h3>
       </li>
       {% endfor %}
-    <!-- <a href="{% url 'todolist:projects_list' %}">Return</a> -->
     {% endblock content %}
   </body>
 </html>

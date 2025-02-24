@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Project
+from .models import Project, Task
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -41,3 +41,14 @@ class ProjectDeleteView(DeleteView):
   
   def get_success_url(self):
     return reverse_lazy('todolist:projects_list')
+  
+class TaskCreateView(CreateView):
+  model= Task
+  template_name= 'todolist/task_form.html'
+  fields= ['category','project', 'name', 'target_date_task']
+  success_url= reverse_lazy('index')
+
+  def get_context_data(self, *args, **kwargs):
+    context= super().get_context_data(*args, **kwargs)
+    context['tasks']=Task.objects.all()
+    return context
