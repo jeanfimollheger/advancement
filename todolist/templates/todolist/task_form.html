@@ -16,9 +16,10 @@
     </form>
     <h2>Your others tasks about this category && project</h2>
     <ul>
-      {% for task in tasks %}
-      <li>
-       <h3>je veux recuper les taches ayant la même category et project que celle qui vient d'etre "submit"</h3>
+      {% for task in related_tasks %}
+       <li>
+        <h3>{{ task.done }} - {{ task.name }}</h3>
+        <h3>{{ task.target_date_task }}</h3>
       </li>
       {% endfor %}
     {% endblock content %}

@@ -46,9 +46,17 @@ class TaskCreateView(CreateView):
   model= Task
   template_name= 'todolist/task_form.html'
   fields= ['category','project', 'name', 'target_date_task']
-  success_url= reverse_lazy('index')
+  success_url= reverse_lazy('todolist:task-create')
 
   def get_context_data(self, *args, **kwargs):
     context= super().get_context_data(*args, **kwargs)
     context['tasks']=Task.objects.all()
     return context
+    
+  def form_valid(self, form):
+    # Sauvegarder l'instance du formulaire
+    self.object = form.save()
+    context= super().get_context_data()
+    context['related_tasks']=Task.objects.filter(category=self.object.category, project=self.object.project).exclude(pk=self.object.pk)
+    return self.render_to_response(context)
+
