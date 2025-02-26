@@ -21,6 +21,7 @@
       création : {{ task.creation }} / Catégorie : {{ task.category }} / Projet
       : {{ task.project }}
     </h6>
+    <a href="{% url 'todolist:task_detail' task.slug %}">Détail</a>
     <p></p>
     {% endfor %} {% endblock %}
   </body>
