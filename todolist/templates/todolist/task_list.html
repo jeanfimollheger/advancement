@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/users/style.css' %}" />
+  </head>
+  <body>
+    {% block content %}
+
+    <h2>Liste des tâches</h2>
+
+    {% for task in task_list %}
+
+    <h4>
+      {{ task.name }} => {{ task.target_date_task }} / Done : {{task.done }}
+    </h4>
+    <h6>
+      création : {{ task.creation }} / Catégorie : {{ task.category }} / Projet
+      : {{ task.project }}
+    </h6>
+    <p></p>
+    {% endfor %} {% endblock %}
+  </body>
+</html>

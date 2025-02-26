@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ProjectListView, ProjectDetailView,ProjectCreateView, ProjectUpdateView, ProjectDeleteView
-from .views import TaskCreateView
+from .views import TaskCreateView, TaskListView
 
 app_name = 'todolist'  # Définir l'espace de noms ici
 
@@ -10,5 +10,6 @@ urlpatterns = [
     path('project_creation/', ProjectCreateView.as_view(), name='project_creation'),
     path('project_update/<str:slug>/', ProjectUpdateView.as_view(), name='project_update'),
     path('project_delete/<str:slug>/', ProjectDeleteView.as_view(), name='project_delete'),
-    path('task_creation/', TaskCreateView.as_view(), name='task_creation')
+    path('task_creation/', TaskCreateView.as_view(), name='task_creation'),
+    path('task_list/', TaskListView.as_view(), name='task_list')
 ]

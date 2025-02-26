@@ -60,3 +60,10 @@ class TaskCreateView(CreateView):
     context['related_tasks']=Task.objects.filter(category=self.object.category, project=self.object.project).exclude(pk=self.object.pk)
     return self.render_to_response(context)
 
+class TaskListView(ListView):
+  model= Task
+  template_name= 'todolist/task_list.html'
+  #context_object_name= 'autre_chose_que_object_list_ou_task_list'
+  
+  def get_success_url(self):
+    return reverse_lazy('todolist:task_list')
