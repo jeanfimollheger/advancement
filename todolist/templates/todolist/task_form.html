@@ -9,7 +9,7 @@
   </head>
   <body>
     {% block content %}
-    <h2>Your new task ???</h2>
+    <h2>Your task </h2>
     <form method="post">
       {% csrf_token %} {{ form.as_p }}
       <button type="submit">Save</button>

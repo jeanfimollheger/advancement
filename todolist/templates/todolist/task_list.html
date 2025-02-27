@@ -15,13 +15,15 @@
     {% for task in task_list %}
 
     <h4>
-      {{ task.name }} => {{ task.target_date_task }} / Done : {{task.done }}
+      {{ task.name }} => {{ task.target_date_task }} / Done : {{ task.done }}
     </h4>
     <h6>
-      création : {{ task.creation }} / Catégorie : {{ task.category }} / Projet
-      : {{ task.project }}
+      création : {{ task.creation_date }} / Catégorie : {{ task.category }} /
+      Projet : {{ task.project }}
     </h6>
     <a href="{% url 'todolist:task_detail' task.slug %}">Détail</a>
+    <a href="{% url 'todolist:task_update' task.slug %}">Update</a>
+    <a href="{% url 'todolist:task_delete' task.slug %}">Delete</a>
     <p></p>
     {% endfor %} {% endblock %}
   </body>

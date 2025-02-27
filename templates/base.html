@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Hello World</title>
     <link rel="stylesheet" href="{% static 'css/users/style.css' %}" />
   </head>
   <body>
@@ -21,7 +21,9 @@
     <p>Personne n'est connecté.</p>
     <a href="{% url 'login' %}">Se connecter</a>
     {% endif %} <br /><br />
-    <a href="{% url 'todolist:projects_list' %}">Projects list</a>
+    <a href="{% url 'todolist:projects_list' %}">Projects list / </a>
+
+    <a href="{% url 'todolist:task_list' %}">Tasks list</a>
     {% block content %} {% endblock %}
   </body>
 </html>

@@ -72,3 +72,19 @@ class TaskDetailView(DetailView):
   model= Task
   template_name= 'todolist/task_detail.html'
   #context_object_name= 'autre_chose_que_object_ou_task'
+
+class TaskUpdateView(UpdateView):
+  model= Task
+  template_name= 'todolist/task_form.html'
+  fields= ['category','project', 'name', 'target_date_task', 'done']
+  widget= {'done': 'checkbox'}
+  
+  def get_success_url(self):  
+    return reverse_lazy('todolist:task_detail', kwargs={'slug': self.object.slug})
+
+class TaskDeleteView(DeleteView):
+  model= Task
+  template_name= 'todolist/task_confirm_delete.html'
+    
+  def get_success_url(self):
+    return reverse_lazy('todolist:task_list') 
