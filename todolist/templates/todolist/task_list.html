@@ -15,7 +15,27 @@
     {% for task in task_list %}
 
     <h4>
-      {{ task.name }} => {{ task.target_date_task }} / Done : {{ task.done }}
+      <!-- <input
+        type="checkbox"
+        name="done_{{ task.id }}"
+        {%
+        if
+        task.done
+        %}checked{%
+        endif
+        %}
+      /> -->
+      <!-- {{ task.done }} -->
+      <tr>
+        <td>{{ task.name }} => {{ task.target_date_task }} /</td>
+        <td>
+          {% if task.done %}
+          <span class="done">✔️ Done</span>
+          {% else %}
+          <span class="not-done">❌ Not Done</span>
+          {% endif %}
+        </td>
+      </tr>
     </h4>
     <h6>
       création : {{ task.creation_date }} / Catégorie : {{ task.category }} /

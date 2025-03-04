@@ -38,3 +38,10 @@ h3 {
   font-weight: 175;
   font-style: normal;
 }
+
+.done {
+  color: green;
+}
+.not-done {
+  color: red;
+}
