@@ -2,7 +2,7 @@ from django import forms
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .forms import ProjectForm, TaskForm
-from .models import Project, Task
+from .models import Category, Project, Task
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -99,8 +99,19 @@ class TaskDeleteView(DeleteView):
   def get_success_url(self):
     return reverse_lazy('todolist:task_list') 
   
-class TaskCalendarUpdateView(UpdateView):
+class TaskCalendarView(ListView):
   model= Task
   template_name= 'todolist/task_calendar_form.html'
   fields= ['name', 'target_date_task', 'done']
+
+  def get_context_data(self, *args, **kwargs):
+    context= super().get_context_data(*args, **kwargs)
+    categories=Category.objects.all()
+    context['categories']=categories
+    # Créer un dictionnaire pour mapper les catégories à leurs tâches
+    category_tasks = {category: Task.objects.filter(category=category).filter(done= False).order_by('target_date_task') for category in categories}
+    print(category_tasks)
+    
+    context['category_tasks'] = category_tasks
+    return context
   

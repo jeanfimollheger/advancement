@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% extends 'base.html' %} {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/users/style.css' %}" />
+  </head>
+  <body>
+    {% block content %}
+    <h2>Your tasks calendar</h2>
+    <h3>By category</h3>
+    {% for category, tasks in category_tasks.items %}
+    <h3>{{category.name}}</h3>
+    <ul>
+      {% for task in tasks %}
+      <h3>{{ category_tasks.category.name }}</h3>
+      <li>
+        <td>
+          {% if task.done %}
+          <span class="done">✔️ Done</span>
+          <h3>- {{ task.name }}</h3>
+          {% else %}
+          <span class="not-done">❌ Not Done</span>
+          <h3>- {{ task.name }}</h3>
+          <a href="{% url 'todolist:task_update' task.slug %}">update</a>
+          {% endif %}
+        </td>
+        <h3>{{ task.done }} - {{ task.name }}</h3>
+        <h3>{{ task.target_date_task }}</h3>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endfor %} {% endblock content %}
+  </body>
+</html>

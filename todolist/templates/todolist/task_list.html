@@ -15,17 +15,6 @@
     {% for task in task_list %}
 
     <h4>
-      <!-- <input
-        type="checkbox"
-        name="done_{{ task.id }}"
-        {%
-        if
-        task.done
-        %}checked{%
-        endif
-        %}
-      /> -->
-      <!-- {{ task.done }} -->
       <tr>
         <td>{{ task.name }} => {{ task.target_date_task }} /</td>
         <td>

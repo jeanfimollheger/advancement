@@ -23,7 +23,9 @@
     {% endif %} <br /><br />
     <a href="{% url 'todolist:projects_list' %}">Projects list / </a>
 
-    <a href="{% url 'todolist:task_list' %}">Tasks list</a>
+    <a href="{% url 'todolist:task_list' %}">Tasks list / </a>
+    <a href="{% url 'todolist:task_calendar_list' %}">Your tasks'calendar</a>
+
     {% block content %} {% endblock %}
   </body>
 </html>
