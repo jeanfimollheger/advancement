@@ -4,6 +4,11 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .forms import ProjectForm, TaskForm
 from .models import Category, Project, Task
 from django.urls import reverse_lazy
+from datetime import date, timedelta
+
+today=date.today()
+end_of_week=today+timedelta(days=6)
+
 
 # Create your views here.
 class ProjectListView(ListView):
@@ -109,9 +114,19 @@ class TaskCalendarView(ListView):
     categories=Category.objects.all()
     context['categories']=categories
     # Créer un dictionnaire pour mapper les catégories à leurs tâches
-    category_tasks = {category: Task.objects.filter(category=category).filter(done= False).order_by('target_date_task') for category in categories}
-    print(category_tasks)
+    category_late_tasks = {category: Task.objects.filter(category=category, done= False, target_date_task__lt=today).order_by('target_date_task') for category in categories}
+    print("category_late_tasks :")
+    print(category_late_tasks)
+    context['category_late_tasks'] = category_late_tasks
     
-    context['category_tasks'] = category_tasks
+    category_week_tasks = {category: Task.objects.filter(category=category, done= False, target_date_task__gte=today, target_date_task__lt=end_of_week).order_by('target_date_task') for category in categories}
+    print("category_week_tasks :")
+    print(category_week_tasks)
+    context['category_week_tasks'] = category_week_tasks
+
+    category_future_tasks = {category: Task.objects.filter(category=category, done= False, target_date_task__gte=end_of_week).order_by('target_date_task') for category in categories}
+    print("category_future_tasks :")
+    print(category_future_tasks)
+    context['category_future_tasks'] = category_future_tasks
     return context
   
