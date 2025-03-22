@@ -14,4 +14,4 @@ class TaskForm(forms.ModelForm):
     fields = ['category','name', 'target_date_task', 'done']
     widget= {'target_date_task': forms.DateInput(attrs={'type':'date'}),
              'done': forms.CheckboxInput(),
-             }
+            }

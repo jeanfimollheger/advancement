@@ -116,7 +116,7 @@ class TaskCalendarView(ListView):
     # Créer un dictionnaire pour mapper les catégories à leurs tâches
     category_late_tasks = {category: Task.objects.filter(category=category, done= False, target_date_task__lt=today).order_by('target_date_task') for category in categories}
     print("category_late_tasks :")
-    print(category_late_tasks)
+    print(f'{len(category_late_tasks)} values')
     context['category_late_tasks'] = category_late_tasks
     
     category_week_tasks = {category: Task.objects.filter(category=category, done= False, target_date_task__gte=today, target_date_task__lt=end_of_week).order_by('target_date_task') for category in categories}

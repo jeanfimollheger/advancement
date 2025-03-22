@@ -13,69 +13,75 @@
 
     <h2>in late !</h2>
     {% for category, tasks in category_late_tasks.items %}
-    <h3>{{category.name}}</h3>
-    <ul>
-      {% for task in tasks %}
-      <h3>{{ category_late_tasks.category.name }}</h3>
-      <li>
-        <td>
-          {% if task.done %}
-          <span class="done">✔️ Done</span>
-          <h3>- {{ task.name }}</h3>
-          {% else %}
-          <span class="not-done">❌ Not Done</span>
-          <h3>- {{ task.name }}</h3>
-          <a href="{% url 'todolist:task_update' task.slug %}">update</a>
-          {% endif %}
-        </td>
-        <h3>target_date : {{ task.target_date_task }}</h3>
-      </li>
-      {% endfor %}
-    </ul>
+      {% if tasks|length > 0 %}
+          <h3>{{ category.name }}</h3>
+          <ul>
+            {% for task in tasks %}
+                <li>
+                    <td>
+                      {% if task.done %}
+                        <span class="done">✔️ Done</span>
+                        <h3>- {{ task.name }}</h3>
+                      {% else %}
+                        <span class="not-done">❌ Not Done</span>
+                        
+                        <a href="{% url 'todolist:task_update' task.slug %}"><h3>- {{ task.name }}</h3></a>
+                      {% endif %}
+                    </td>
+                    <h3>target_date : {{ task.target_date_task }}</h3>
+                </li>
+            {% endfor %}
+          </ul>
+      {% endif %}
     {% endfor %}
+
     <h2>Your buzz this week</h2>
     {% for category, tasks in category_week_tasks.items %}
-    <h3>{{category.name}}</h3>
-    <ul>
-      {% for task in tasks %}
-      <h3>{{ category_week_tasks.category.name }}</h3>
-      <li>
-        <td>
-          {% if task.done %}
-          <span class="done">✔️ Done</span>
-          <h3>- {{ task.name }}</h3>
-          {% else %}
-          <span class="not-done">❌ Not Done</span>
-          <h3>- {{ task.name }}</h3>
-          <a href="{% url 'todolist:task_update' task.slug %}">update</a>
-          {% endif %}
-        </td>
-        <h3>target_date : {{ task.target_date_task }}</h3>
-      </li>
-      {% endfor %}
-    </ul>
+      {% if tasks|length > 0 %}
+          <h3>{{ category.name }}</h3>
+          <ul>
+            {% for task in tasks %}
+                <li>
+                    <td>
+                      {% if task.done %}
+                        <span class="done">✔️ Done</span>
+                        <h3>- {{ task.name }}</h3>
+                      {% else %}
+                        <span class="not-done">❌ Not Done</span>
+                        
+                        <a href="{% url 'todolist:task_update' task.slug %}"><h3>- {{ task.name }}</h3></a>
+                      {% endif %}
+                    </td>
+                    <h3>target_date : {{ task.target_date_task }}</h3>
+                </li>
+            {% endfor %}
+          </ul>
+      {% endif %}
     {% endfor %}
+
     <h2>and later ...</h2>
     {% for category, tasks in category_future_tasks.items %}
-    <h3>{{category.name}}</h3>
-    <ul>
-      {% for task in tasks %}
-      <h3>{{ category_future_tasks.category.name }}</h3>
-      <li>
-        <td>
-          {% if task.done %}
-          <span class="done">✔️ Done</span>
-          <h3>- {{ task.name }}</h3>
-          {% else %}
-          <span class="not-done">❌ Not Done</span>
-          <h3>- {{ task.name }}</h3>
-          <a href="{% url 'todolist:task_update' task.slug %}">update</a>
-          {% endif %}
-        </td>
-        <h3>target_date : {{ task.target_date_task }}</h3>
-      </li>
-      {% endfor %}
-    </ul>
-    {% endfor %} {% endblock content %}
+      {% if tasks|length > 0 %}
+          <h3>{{ category.name }}</h3>
+          <ul>
+            {% for task in tasks %}
+                <li>
+                    <td>
+                      {% if task.done %}
+                        <span class="done">✔️ Done</span>
+                        <h3>- {{ task.name }}</h3>
+                      {% else %}
+                        <span class="not-done">❌ Not Done</span>
+                        
+                        <a href="{% url 'todolist:task_update' task.slug %}"><h3>- {{ task.name }}</h3></a>
+                      {% endif %}
+                    </td>
+                    <h3>target_date : {{ task.target_date_task }}</h3>
+                </li>
+            {% endfor %}
+          </ul>
+      {% endif %}
+    {% endfor %}
+  {% endblock content %}
   </body>
 </html>
